@@ -1,15 +1,26 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "prettier"],
   "plugins": ["@stylistic/js"],
   "rules": {
-    "@stylistic/js/indent" : ["error", 2],
+    "@stylistic/js/indent": ["error", 2],
     "@stylistic/js/jsx-quotes": ["error", "prefer-single"],
     "@stylistic/js/no-multi-spaces": "error",
     "@stylistic/js/no-trailing-spaces": "error",
     "@stylistic/js/no-whitespace-before-property": "error",
-    "@stylistic/js/quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "@stylistic/js/array-bracket-spacing": ["error", "always", { "objectsInArrays": false }],
-    "@stylistic/js/comma-spacing": ["error", { "before": false, "after": true }],
+    "@stylistic/js/quotes": [
+      "error",
+      "double",
+      { "allowTemplateLiterals": true }
+    ],
+    "@stylistic/js/array-bracket-spacing": [
+      "error",
+      "always",
+      { "objectsInArrays": false }
+    ],
+    "@stylistic/js/comma-spacing": [
+      "error",
+      { "before": false, "after": true }
+    ],
     "@stylistic/js/object-curly-spacing": ["error", "always"]
   }
 }
