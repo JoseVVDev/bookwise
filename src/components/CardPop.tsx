@@ -19,7 +19,7 @@ export default function CardPop() {
           </h5>
           <p className='text-sm leading-base text-gray-400'>Robert Kurvitz</p>
         </header>
-        <div className='flex'>
+        <div className='flex text-purple-100 gap-1'>
           <RatingRead score={3.5} />
         </div>
       </main>

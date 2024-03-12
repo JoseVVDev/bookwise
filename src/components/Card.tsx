@@ -20,7 +20,7 @@ export default function Card() {
             <p className='text-sm leading-base text-gray-400'>Hoje</p>
           </div>
         </div>
-        <div className='flex self-start'>
+        <div className='flex self-start text-purple-100 gap-1'>
           <RatingRead score={4.5} />
         </div>
       </header>

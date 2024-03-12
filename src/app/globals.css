@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  --scrollbar-track-radius: 9999px;
+  --scrollbar-thumb-radius: 9999px;
+}

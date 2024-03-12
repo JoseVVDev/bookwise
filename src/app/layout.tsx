@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={nunitoSans.className} lang='en'>
-      <body className='h-screen bg-gray-800'>{children}</body>
+      <body className='h-screen bg-gray-800 scrollbar scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-700'>{children}</body>
     </html>
   );
 }
