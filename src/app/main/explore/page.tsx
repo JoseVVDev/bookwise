@@ -5,6 +5,7 @@ import CardModal from "@/components/CardModal";
 import CardReview from "@/components/CardReview";
 import ExploreTags from "@/components/ExploreTags";
 import LoginModal from "@/components/LoginModal";
+import WriteReview from "@/components/WriteReview";
 import { Binoculars } from "@phosphor-icons/react/dist/ssr/Binoculars";
 import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr/MagnifyingGlass";
 import { X } from "@phosphor-icons/react/dist/ssr/X";
@@ -69,6 +70,7 @@ export default function Explore() {
                 <LoginModal />
               </div>
               <div className='flex flex-col gap-3'>
+                <WriteReview/>
                 <CardReview/>
                 <CardReview/>
                 <CardReview/>

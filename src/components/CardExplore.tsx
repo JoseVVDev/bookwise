@@ -17,7 +17,7 @@ export default function CardExplore() {
           air Sacred and{" "}
         </h5>
         <p className='text-sm leading-base text-gray-400'>Robert Kurvitz</p>
-        <div className='mt-auto flex text-purple-100'>
+        <div className='mt-auto flex gap-1 text-purple-100'>
           <RatingRead score={4.5} />
         </div>
       </header>
