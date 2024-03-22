@@ -13,6 +13,7 @@
     "@radix-ui/react-dialog": "^1.0.5",
     "@types/uuid": "^9.0.7",
     "next": "14.0.4",
+    "prisma": "^5.11.0",
     "react": "^18",
     "react-dom": "^18",
     "uuid": "^9.0.1"
