@@ -15,17 +15,13 @@ export default function RatingWrite() {
     setScore(number)
   }
 
-  useEffect(() => {
-    console.log(chosenScore)
-  }, [ chosenScore ])
-
   return (
     <div className='flex'>
       {
         maxRating.map((ratingWorth) => {
           return (
             <div key={ratingWorth}>
-              <div className='flex cursor-pointer relative w-10 h-10'
+              <div className='flex cursor-pointer relative w-8 h-8'
                 onMouseLeave={() => {
                   handleScoreChange(0, false)
                 }}
@@ -48,17 +44,17 @@ export default function RatingWrite() {
                 </div>
                 <StarHalf
                   weight={ score === ratingWorth - 0.5 || chosenScore === ratingWorth - 0.5 ? "fill" : "regular" }
-                  className={`absolute w-10 h-10 text-purple-100 
+                  className={`absolute w-8 h-8 text-purple-100 
                   ${score === ratingWorth - 0.5 || chosenScore === ratingWorth - 0.5 ? " " : "hidden" }`}
                 />
                 <Star
                   weight={ score >= ratingWorth || chosenScore >= ratingWorth ? "fill" : "regular" }
-                  className={`absolute w-10 h-10 text-purple-100 
+                  className={`absolute w-8 h-8 text-purple-100 
                   ${score >= ratingWorth || chosenScore >= ratingWorth ? " " : "hidden" }`}
                 />
                 <Star
                   weight='regular'
-                  className='absolute w-10 h-10 text-purple-100'/>
+                  className='absolute w-8 h-8 text-purple-100'/>
               </div>
             </div>
           )

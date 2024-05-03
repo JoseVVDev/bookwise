@@ -1,7 +1,7 @@
 import Image from "next/image";
-import RatingRead from "./RatingRead";
 import { X } from "@phosphor-icons/react/dist/ssr/X";
 import { Check } from "@phosphor-icons/react/dist/ssr/Check";
+import RatingWrite from "./RatingWrite";
 
 export default function WriteReview() {
   return (
@@ -21,7 +21,7 @@ export default function WriteReview() {
         </div>
       </div>
       <div className='flex self-start text-purple-100 gap-1 items-center'>
-        <RatingRead score={4.5} />
+        <RatingWrite/>
       </div>
       <div className='flex flex-col w-full mt-6'>
         <textarea

@@ -3,6 +3,25 @@ import CardPop from "@/components/CardPop";
 import { CaretRight } from "@phosphor-icons/react/dist/ssr/CaretRight";
 import { ChartLineUp } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
 
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient()
+
+async function data() {
+  const books = await prisma.book.findMany()
+  return books
+}
+
+data()
+  .then(async () => {
+    await prisma.$disconnect()
+  })
+  .catch(async (e) => {
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })
+
 export default function Main() {
   return (
     <>

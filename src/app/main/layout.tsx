@@ -5,6 +5,13 @@ import { ChartLineUp } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
 import { Binoculars } from "@phosphor-icons/react/dist/ssr/Binoculars";
 import { SignIn } from "@phosphor-icons/react/dist/ssr/SignIn";
 import NavLink from "@/components/NavLink";
+import prisma from "../../../utils/prisma";
+
+
+async function data() {
+  const books = await prisma.book.findMany()
+  return books
+}
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (

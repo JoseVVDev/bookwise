@@ -10,12 +10,13 @@ interface NavLinkProp {
   children: ReactNode;
 }
 
+
 export default function NavLink({ pathName, path, children }: NavLinkProp) {
   const navPath = usePathname();
 
   return (
     <Link
-      href={path}
+      href={{ pathname: path }}
       data-currentpage={path === navPath ? "true" : "false"}
       className='group relative flex cursor-pointer gap-3 transition hover:text-gray-100 data-[currentPage=true]:font-bold data-[currentPage=true]:text-gray-100'
     >
