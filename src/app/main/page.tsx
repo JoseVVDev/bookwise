@@ -1,28 +1,36 @@
-import Card from "@/components/Card";
 import CardPop from "@/components/CardPop";
 import { CaretRight } from "@phosphor-icons/react/dist/ssr/CaretRight";
 import { ChartLineUp } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
 
-import { PrismaClient } from "@prisma/client"
+import RecentReviews from "./RecentReviews";
+import prisma from "../../../utils/prisma";
+import dayjs from "dayjs";
 
-const prisma = new PrismaClient()
-
-async function data() {
-  const books = await prisma.book.findMany()
-  return books
-}
-
-data()
-  .then(async () => {
-    await prisma.$disconnect()
+export default async function Main() {
+  const recentReview = await prisma.rating.findMany({
+    where: {
+      created_at: {
+        lte: dayjs().format(),
+        gt: dayjs("2023-01-01").format()
+      }
+    },
+    include: {
+      book: {
+        select: {
+          cover_url: true,
+          author: true,
+          name: true
+        }
+      },
+      user: {
+        select: {
+          avatar_url: true,
+          name: true
+        }
+      }
+    }
   })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
 
-export default function Main() {
   return (
     <>
       <header className='flex w-full items-center gap-4 text-white'>
@@ -30,16 +38,7 @@ export default function Main() {
         <h3 className='text-2xl'>Início</h3>
       </header>
       <main className='mt-10 flex items-center justify-between leading-base text-white'>
-        <div className='flex w-[63%] flex-col justify-center gap-3 text-sm'>
-          <div className='flex h-7 w-full items-center'>
-            <h6 className=''>Avaliações recentes</h6>
-          </div>
-          <div className='mb-10 flex flex-col gap-4'>
-            <Card />
-            <Card />
-            <Card />
-          </div>
-        </div>
+        <RecentReviews reviews={recentReview}/>
         <div className='w-[30%] self-start text-sm'>
           <div className='flex flex-col items-start justify-between gap-3'>
             <header className='flex h-7 w-full items-center justify-between'>

@@ -22,10 +22,15 @@ export interface book {
 }
 
 interface books {
-  books: book[]
+  books: book[],
+  categories: {
+    id: string,
+    name: string
+  }[]
 }
 
-export default function BooksDisplay({ books }: books) {
+
+export default function BooksDisplay({ books, categories }: books) {
 
   return(
     <>
@@ -49,7 +54,10 @@ export default function BooksDisplay({ books }: books) {
             />
           </div>
           <div className='flex basis-full items-center gap-3 text-purple-100'>
-            <ExploreTags />
+            { categories.map(category => {
+              return <ExploreTags key={category.id} id={category.id} name={category.name}/>
+            }) }
+
           </div>
           <div className='grid w-full grid-cols-3 gap-5'>
             {
