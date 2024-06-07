@@ -2,6 +2,7 @@ import Image from "next/image";
 import RatingRead from "./RatingRead";
 import { ReviewsInterface } from "@/app/main/RecentReviews";
 import BookUrlFix from "../../utils/bookUrlfix";
+import calcDate from "../../utils/calcDate";
 
 export default function Card({ book, created_at, description, rate, user, id }: ReviewsInterface) {
   return (
@@ -19,7 +20,7 @@ export default function Card({ book, created_at, description, rate, user, id }: 
           </div>
           <div className='flex flex-col'>
             <h5 className='text-base leading-base'>{user.name}</h5>
-            <p className='text-sm leading-base text-gray-400'>Hoje</p>
+            <p className='text-sm leading-base text-gray-400'>{calcDate(created_at)}</p>
           </div>
         </div>
         <div className='flex self-start text-purple-100 gap-1'>
