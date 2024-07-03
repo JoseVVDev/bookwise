@@ -1,3 +1,5 @@
+"use client"
+
 import { X } from "@phosphor-icons/react";
 import google from "#/assets/google.svg";
 import github from "#/assets/github.svg";

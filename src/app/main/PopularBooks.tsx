@@ -1,6 +1,6 @@
 import CardPop from "@/components/CardPop";
 import { CaretRight } from "@phosphor-icons/react/dist/ssr/CaretRight";
-import { PopularBooksInterface } from "./page";
+import { PopularBooksInterface } from "../api/getPopularBooks";
 
 interface popularBooksArray {
   books: PopularBooksInterface[]

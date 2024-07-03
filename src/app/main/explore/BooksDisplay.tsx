@@ -2,14 +2,12 @@
 
 import CardExplore from "@/components/CardExplore";
 import CardModal from "@/components/CardModal";
-import CardReview from "@/components/CardReview";
 import ExploreTags from "@/components/ExploreTags";
-import LoginModal from "@/components/LoginModal";
-import WriteReview from "@/components/WriteReview";
 import { Binoculars } from "@phosphor-icons/react/dist/ssr/Binoculars";
 import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr/MagnifyingGlass";
 import { X } from "@phosphor-icons/react/dist/ssr/X";
 import * as Dialog from "@radix-ui/react-dialog";
+import { ReactNode, useState } from "react";
 
 export interface book {
   id: string;
@@ -19,9 +17,11 @@ export interface book {
   cover_url: string;
   total_pages: number;
   created_at: Date;
+  categoryIds: string[];
+  categoryNames: string[];
 }
 
-interface books {
+interface library {
   books: book[],
   categories: {
     id: string,
@@ -29,8 +29,8 @@ interface books {
   }[]
 }
 
-
-export default function BooksDisplay({ books, categories }: books) {
+export default function BooksDisplay({ books, categories }: library) {
+  const [ bookModal, setBookModal ] = useState<book>()
 
   return(
     <>
@@ -63,7 +63,7 @@ export default function BooksDisplay({ books, categories }: books) {
             {
               books.map(book => {
                 return (
-                  <Dialog.Trigger key={book.id}>
+                  <Dialog.Trigger key={book.id} onClick={() => setBookModal(book) }>
                     <CardExplore
                       id={book.id}
                       author={book.author}
@@ -72,6 +72,8 @@ export default function BooksDisplay({ books, categories }: books) {
                       cover_url={book.cover_url}
                       total_pages={book.total_pages}
                       created_at={book.created_at}
+                      categoryIds={book.categoryIds}
+                      categoryNames={book.categoryNames}
                     />
                   </Dialog.Trigger>
                 )
@@ -88,17 +90,7 @@ export default function BooksDisplay({ books, categories }: books) {
               <Dialog.Close className='text-gray-400 self-end mb-4 hover:bg-gray-700 p-1 rounded-sm transition'>
                 <X size={24}/>
               </Dialog.Close>
-              <CardModal/>
-              <div className='w-full flex cursor-pointer py-1 mt-10 mb-4 text-sm justify-between items-center'>
-                <span className='text-gray-200'>Avaliações</span>
-                <LoginModal />
-              </div>
-              <div className='flex flex-col gap-3'>
-                <WriteReview/>
-                <CardReview/>
-                <CardReview/>
-                <CardReview/>
-              </div>
+              <CardModal bookModal={bookModal!}/>
             </div>
           </Dialog.Content>
         </Dialog.Portal>
